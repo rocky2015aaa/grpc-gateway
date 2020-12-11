@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package controller;
+
+import "google/api/annotations.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "gitlab.com/Fratbe/addglee/src/server/models/user_account.proto";
+import "controller.proto";
+
+option (gogoproto.goproto_unkeyed_all) = false;
+option (gogoproto.goproto_unrecognized_all) = false;
+option (gogoproto.goproto_sizecache_all) = false;
+
+message LoginInformation {
+  // @inject_tag: valid:"length(1|50)"
+  string pseudo = 1;
+  // @inject_tag: valid:"-"
+  string password = 2;
+}
+
+message LoginInformationResponse {
+  string message = 1;
+  string access_token = 2;
+  models.UserAccount user_account = 3;
+}
+
+message SelfCareInformation {
+  // @inject_tag: valid:"length(1|50)"
+  string pseudo = 1;
+  // @inject_tag: valid:"-"
+  string password = 2;
+  // @inject_tag: valid:"length(1|50)"
+  string field = 3;
+  // @inject_tag: valid:"length(1|50)"
+  string value = 4;
+}
+
+message RefreshTokenRequest {}
+
+message RefreshTokenResponse {
+  string message = 1;
+  string access_token = 2;
+}
+
+service UserAccountService {
+  rpc SignUpAccount(models.UserAccount) returns (controller.Response) {
+    option (google.api.http) = {
+      post: "/account"
+      body: "*"
+    };
+  }
+
+  rpc LoginAccount(LoginInformation) returns (LoginInformationResponse) {
+    option (google.api.http) = {
+      post: "/login"
+      body: "*"
+    };
+  }
+
+  rpc UpdateAccount(SelfCareInformation) returns (controller.Response) {
+    option (google.api.http) = {
+      post: "/account_update"
+      body: "*"
+    };
+  }
+
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse) {
+    option (google.api.http) = {
+      get: "/access_token_refresh"
+    };
+  }
+}

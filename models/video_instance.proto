@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package models;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "google/protobuf/timestamp.proto";
+
+option (gogoproto.goproto_unkeyed_all) = false;
+option (gogoproto.goproto_unrecognized_all) = false;
+option (gogoproto.goproto_sizecache_all) = false;
+
+message YoutubeVideoInstance{
+  // @inject_tag: valid:"-"
+  uint32 id = 1;
+  // @inject_tag: valid:"numeric"
+  uint32 video_source_id = 2;
+  // @inject_tag: valid:"length(1|50)"
+  string url_end = 3;
+  // @inject_tag: valid:"numeric"
+  uint32 user_account_id = 4;
+  // @inject_tag: valid:"-"
+  string etag = 5;
+  // @inject_tag: valid:"-"
+  string title = 6;
+  // @inject_tag: valid:"-"
+  string description = 7;
+  // @inject_tag: valid:"-"
+  string category = 8;
+  // @inject_tag: valid:"-" gorm:"column:publishedat"
+  google.protobuf.Timestamp publishedat = 9 [(gogoproto.stdtime) = true];
+  // @inject_tag: valid:"-"
+  string snippet_thumbnail_url = 10;
+  // @inject_tag: valid:"-"
+  uint32 categoryid = 11;
+  // @inject_tag: valid:"-"
+  uint32 defaultlanguage = 12;
+  // @inject_tag: valid:"-"
+  string contentdetails_duration = 13;
+  // @inject_tag: valid:"-"
+  bytes contentdetails_dimension = 14;
+  // @inject_tag: valid:"-"
+  bytes contentdetails_definition = 15;
+  // @inject_tag: valid:"-"
+  string contentdetails_regionrestriction_allowed = 16;
+  // @inject_tag: valid:"-"
+  string contentdetails_regionrestriction_blocked = 17;
+  // @inject_tag: valid:"-"
+  bool contentdetails_content_rating = 18;
+  // @inject_tag: valid:"-"
+  bytes contentdetails_projection = 19;
+  // @inject_tag: valid:"-"
+  bool status_embeddable = 20;
+  // @inject_tag: valid:"-"
+  uint32 statistics_viewcount = 21;
+  // @inject_tag: valid:"-"
+  uint32 statistics_likecount = 22;
+  // @inject_tag: valid:"-"
+  uint32 statistics_dislikecount = 23;
+  // @inject_tag: valid:"numeric"
+  uint32 statistics_commentcount = 24;
+  // @inject_tag: valid:"-"
+  string player_embedhtml = 25;
+  // @inject_tag: valid:"-"
+  uint32 player_embedheight = 26;
+  // @inject_tag: valid:"-"
+  uint32 player_embedwidth = 27;
+  // @inject_tag: valid:"-"
+  google.protobuf.Timestamp recordingdetails_recordingdate = 28 [(gogoproto.stdtime) = true];
+  // @inject_tag: valid:"-"
+  string snippet_channelid = 29;
+  // @inject_tag: valid:"-"
+  uint32 playlist_id = 30;
+}

@@ -1,0 +1,53 @@
+# Comment
+- id: no_account
+  translation: "account not found"
+
+- id: no_discipline
+  translation: "discipline not found"
+
+- id: no_technique
+  translation: "technique not found"
+
+- id: no_level
+  translation: "level not found"
+
+- id: no_curriculum
+  translation: "curriculum not found"
+
+- id: no_curriculum_content
+  translation: "curriculum content not found"
+
+- id: account_updated
+  translation: "user account data updated"
+
+- id: hash_problem
+  translation: "hashing failed"
+
+- id: parsing_problem
+  translation: "parsing failed"
+
+- id: database_issue
+  translation: "the database cannot handle this data"
+
+- id: invalid_request
+  translation: "invalid HTTP request"
+
+- id: invalid_url_domain
+  translation: "url is not matched with domain"
+
+- id: jwt_creation_success
+  translation: "JWT token issued" 
+- id: jwt_creation_problem
+  translation: "failed to issue JWT token"
+
+- id: jwt_refresh_success
+  translation: "JWT token reissued"
+
+- id: no_metadata
+  translation: "failed to get GRPC metadata"
+
+- id: no_bearer
+  translation: "failed to get bearer authorization token"
+
+- id: jwt_parsing_problem
+  translation: "failed to parse JWT token"

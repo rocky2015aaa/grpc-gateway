@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package models;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "google/protobuf/timestamp.proto";
+
+option (gogoproto.goproto_unkeyed_all) = false;
+option (gogoproto.goproto_unrecognized_all) = false;
+option (gogoproto.goproto_sizecache_all) = false;
+
+message UserAccount{
+  // @inject_tag: valid:"-"
+  uint32 id = 1;
+  // @inject_tag: valid:"length(1|50)"
+  string last_name = 2;
+  // @inject_tag: valid:"length(1|50)"
+  string first_name = 3;
+  // @inject_tag: valid:"length(1|50)"
+  string pseudo = 4;
+  // @inject_tag: valid:"-"
+  string comment = 5;
+  // @inject_tag: valid:"-"
+  uint32 max_amount_workouts_per_day = 6;
+  // @inject_tag: valid:"-"
+  uint32 workout_successive_days = 7;
+  // @inject_tag: valid:"-" gorm:"column:birthdate"
+  google.protobuf.Timestamp birth_date = 8 [(gogoproto.stdtime) = true];
+  // @inject_tag: valid:"-"
+  bool gender_malep = 9;
+  // @inject_tag: valid:"numeric"
+  uint32 language_id = 10;
+  // @inject_tag: valid:"-"
+  google.protobuf.Timestamp creation_date = 11 [(gogoproto.stdtime) = true];
+  // @inject_tag: valid:"-"
+  string phone_number = 12;
+  // @inject_tag: valid:"-" gorm:"column:iso_3166"
+  uint32 iso3166 = 13;
+  // @inject_tag: valid:"-"
+  string password = 14;
+  // @inject_tag: valid:"-"
+  google.protobuf.Timestamp password_expiration = 15 [(gogoproto.stdtime) = true];
+  // @inject_tag: valid:"-"
+  bool activated = 16;
+  // @inject_tag: valid:"-"
+  bool fake_account = 17;
+  // @inject_tag: valid:"-"
+  string middle_name = 18;
+  // @inject_tag: valid:"-"
+  google.protobuf.Timestamp modified = 19 [(gogoproto.stdtime) = true];
+  // @inject_tag: valid:"-"
+  //uint32 default_perm = 20;
+}

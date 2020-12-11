@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package controller;
+
+import "google/api/annotations.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+import "controller.proto";
+
+option (gogoproto.goproto_unkeyed_all) = false;
+option (gogoproto.goproto_unrecognized_all) = false;
+option (gogoproto.goproto_sizecache_all) = false;
+
+message VideoInstanceRequest {
+  // @inject_tag: valid:"numeric"
+	uint32 user_account_id = 1;
+  // @inject_tag: valid:"-"
+	string urls = 2;
+}
+
+service VideoInstanceService {
+  rpc CreateVideoInstance(VideoInstanceRequest) returns (controller.Response) {
+    option (google.api.http) = {
+      post: "/videoInstance"
+      body: "*"
+    };
+  }
+}
